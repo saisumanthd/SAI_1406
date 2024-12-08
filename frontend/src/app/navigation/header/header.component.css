@@ -20,7 +20,7 @@ a {
 }
 
 ul {
-  /*order items next to one another*/
+
   display: flex;
   list-style: none;
 }

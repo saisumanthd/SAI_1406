@@ -5,8 +5,8 @@ import {Router} from "@angular/router";
 
 
 export const authGuard = ()=> {
-  const authService = inject(AuthService); // inject AuthService
-  const router = inject(Router); // inject router for navigation
+  const authService = inject(AuthService);
+  const router = inject(Router);
 
   const isAuthenticated = authService.getIsAuth();
 

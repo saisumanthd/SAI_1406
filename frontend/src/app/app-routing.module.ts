@@ -14,7 +14,6 @@ const routes: Routes = [
   {path:'edit/:postId', component: CreatePostComponent, canActivate: [authGuard]},
   {path:'login', component: LoginComponent},
   {path:'signup', component: SignupComponent},
-  // {path:'joke', component: JokeComponent},
 
 ];
 

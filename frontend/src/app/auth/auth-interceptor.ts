@@ -11,9 +11,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler){
 
-    // if(req.url.includes('official-joke-api')){
-    //   return next.handle(req);
-    // }
+
 
     const authToken = this.authService.getToken();
     const authRequest = req.clone( {

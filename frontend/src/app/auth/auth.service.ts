@@ -10,7 +10,7 @@ export class AuthService {
   private isAuthenticated: boolean = false;
   private authStatusListener = new Subject<boolean>();
   private token: string | null = null;
-  private tokenTimer: ReturnType<typeof setTimeout> = 0; // adding this so we don't rely on NodeJS Timer TypeSettings
+  private tokenTimer: ReturnType<typeof setTimeout> = 0;
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -64,7 +64,7 @@ export class AuthService {
   }
 
   autoAuthUser() {
-    const authInfo = this.getAuthData();  // returns json token and expDate
+    const authInfo = this.getAuthData();
     if (!authInfo) {
       return;
     }
@@ -72,7 +72,7 @@ export class AuthService {
     if(expiresIn > 0){
       this.token = authInfo.token;
       this.isAuthenticated = true;
-      this.setAuthTimer(expiresIn / 1000); // since AuthTime is in seconds
+      this.setAuthTimer(expiresIn / 1000);
       this.authStatusListener.next(true);
     }
   }
@@ -86,7 +86,7 @@ export class AuthService {
 
   private saveAuthData(token: string, expirationDate: Date) {
     localStorage.setItem('token', token);
-    localStorage.setItem('expiration', expirationDate.toISOString()); //to serialize the date object
+    localStorage.setItem('expiration', expirationDate.toISOString());
   }
 
   private clearAuthData() {
@@ -103,7 +103,7 @@ export class AuthService {
     }
     return {
       token: token,
-      expirationDate: new Date(expirationDate)  // we have to turn it back into a Date type b/c it is serialized in local storage
+      expirationDate: new Date(expirationDate)
     }
   }
 }

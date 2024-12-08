@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.post('/signup', (req, res, next) => {
     // console.log(req.body);
-    bcrypt.hash(req.body.password, 10) // hash method takes 1) input we want hash/encrypt 2) the salting / salt (the longer the salt, the longer it will take to decrypt)
+    bcrypt.hash(req.body.password, 10)
         .then(hash => {
             const user = new User({
                 email: req.body.email,
@@ -61,7 +61,7 @@ router.post('/login', (req, res, next) => {
         res.status(200).json({
             success: true,
             token: token,
-            expiresIn: 3600 // expires in 1 hour (seconds)
+            expiresIn: 3600
         });
 
     }).catch(err => {
